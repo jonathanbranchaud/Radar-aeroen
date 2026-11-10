@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -29,8 +30,10 @@
 
     <section class="board-wrap" aria-label="Tableau des avions détectés">
       <div class="board-heading">
-        <span>VOL</span><span>ORIG.</span><span>DEST.</span>
-        <span>ALT (PI)</span><span>DIST. KM</span>
+        <span>VOL</span>
+        <span>ORIG.</span>
+        <span>DEST.</span>
+        <span>DIST. KM</span>
       </div>
       <div id="rows" class="rows">
         <div class="empty">EN ATTENTE DES DONNÉES…</div>
@@ -38,9 +41,10 @@
     </section>
 
     <section class="readout">
-      <div><span class="label">AVIONS DÉTECTÉS</span><strong id="count">--</strong></div>
-      <div><span class="label">RAYON</span><strong>5 KM</strong></div>
-      <div><span class="label">PLAFOND</span><strong>5 000 PI</strong></div>
+      <div>
+        <span class="label">AVIONS DÉTECTÉS</span>
+        <strong id="count">--</strong>
+      </div>
     </section>
 
     <section class="details">
@@ -49,6 +53,7 @@
         <div><span>INDICATIF</span><b id="d-call">—</b></div>
         <div><span>TYPE</span><b id="d-type">—</b></div>
         <div><span>IMMATRICULATION</span><b id="d-reg">—</b></div>
+        <div><span>ALT (PI)</span><b id="d-alt">—</b></div>
         <div><span>VITESSE</span><b id="d-speed">—</b></div>
         <div><span>ORIGINE</span><b id="d-origin">—</b></div>
         <div><span>DESTINATION</span><b id="d-dest">—</b></div>
@@ -59,8 +64,12 @@
       <span>DONNÉES ADS-B COMMUNAUTAIRES</span>
       <span>ACTUALISATION : 5 SEC</span>
     </footer>
-    <p id="message" class="message">Autorisez la localisation pour commencer.</p>
+
+    <p id="message" class="message">
+      Autorisez la localisation pour commencer.
+    </p>
   </main>
+
   <script src="/app.js"></script>
 </body>
 </html>
