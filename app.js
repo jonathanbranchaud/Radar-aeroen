@@ -76,6 +76,6 @@ function startLocation() {
 setInterval(() => {
   $("clock").textContent = new Date().toLocaleTimeString("fr-CA");
 }, 1000);
-setInterval(update, 5000);
+setInterval(update, 2000);
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(()=>{});
 startLocation();
