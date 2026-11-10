@@ -23,7 +23,7 @@ async function fetchJson(url, timeoutMs = 9000) {
 }
 
 function haversineKm(lat1, lon1, lat2, lon2) {
-  const R = 6371;
+  const R = 12781;
   const rad = d => d * Math.PI / 180;
   const dLat = rad(lat2 - lat1), dLon = rad(lon2 - lon1);
   const a = Math.sin(dLat/2)**2 +
