@@ -5,6 +5,7 @@ let position = null;
 let flights = [];
 let selected = null;
 let busy = false;
+let previousFlights = new Map();
 
 function setMessage(text) {
   $("message").textContent = text;
@@ -14,6 +15,16 @@ function fmt(value, suffix = "") {
   return value == null ? "—" : `${value}${suffix}`;
 }
 
+function flightSignature(f) {
+  return [
+    f.callsign,
+    f.origin,
+    f.destination,
+    f.type,
+    f.registration
+  ].join("|");
+}
+
 function render() {
   $("count").textContent = flights.length;
   $("rows").innerHTML = "";
@@ -21,16 +32,33 @@ function render() {
   if (!flights.length) {
     $("rows").innerHTML =
       '<div class="empty">AUCUN APPAREIL SOUS 5 000 PI<br>DANS LE RAYON DE 5 KM</div>';
+
     clearDetails();
+    selected = null;
+    previousFlights.clear();
     return;
   }
 
+  const currentFlights = new Map();
+
   for (const f of flights) {
+    const signature = flightSignature(f);
+    const previous = previousFlights.get(f.hex);
+
+    const hasChanged =
+      !previous || previous !== signature;
+
+    currentFlights.set(f.hex, signature);
+
     const row = document.createElement("div");
 
     row.className =
       "flight-row" +
       (selected?.hex === f.hex ? " selected" : "");
+
+    if (hasChanged) {
+      row.classList.add("flap-in");
+    }
 
     const vals = [
       [f.callsign, "flight"],
@@ -54,6 +82,8 @@ function render() {
 
     $("rows").appendChild(row);
   }
+
+  previousFlights = currentFlights;
 
   const current =
     flights.find(f => f.hex === selected?.hex) || flights[0];
