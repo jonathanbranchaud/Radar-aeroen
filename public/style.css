@@ -190,6 +190,45 @@ h1 {
 
   font-family: Arial, sans-serif;
 
+  
+/* ANIMATION TABLEAU A PALETTES */
+
+.flight-row.flap-in {
+  animation: flapArrival 650ms ease-out both;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+@keyframes flapArrival {
+  0% {
+    transform: perspective(500px) rotateX(90deg);
+    opacity: 0;
+    filter: brightness(2);
+  }
+
+  45% {
+    transform: perspective(500px) rotateX(-12deg);
+    opacity: 1;
+  }
+
+  75% {
+    transform: perspective(500px) rotateX(5deg);
+  }
+
+  100% {
+    transform: perspective(500px) rotateX(0deg);
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flight-row.flap-in {
+    animation: none;
+  }
+}
+
+
   font-size: clamp(9px, 2.5vw, 14px);
 
   border-bottom: 4px solid #55564c;
