@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090b08">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Radar Maison">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/style.css">
+  <title>Radar Maison</title>
+</head>
+<body>
+  <main class="cabinet">
+    <header class="topline">
+      <div>
+        <div class="eyebrow">SURVEILLANCE AÉRIENNE LOCALE</div>
+        <h1>RADAR MAISON</h1>
+      </div>
+      <div class="live"><span class="dot"></span> EN DIRECT</div>
+    </header>
+
+    <section class="status-strip">
+      <span id="status">INITIALISATION DU RADAR…</span>
+      <span id="clock">--:--:--</span>
+    </section>
+
+    <section class="board-wrap" aria-label="Tableau des avions détectés">
+      <div class="board-heading">
+        <span>VOL</span><span>ORIG.</span><span>DEST.</span>
+        <span>ALT (PI)</span><span>DIST. KM</span>
+      </div>
+      <div id="rows" class="rows">
+        <div class="empty">EN ATTENTE DES DONNÉES…</div>
+      </div>
+    </section>
+
+    <section class="readout">
+      <div><span class="label">AVIONS DÉTECTÉS</span><strong id="count">--</strong></div>
+      <div><span class="label">RAYON</span><strong>5 KM</strong></div>
+      <div><span class="label">PLAFOND</span><strong>5 000 PI</strong></div>
+    </section>
+
+    <section class="details">
+      <div class="details-title">DÉTAIL DU VOL SÉLECTIONNÉ</div>
+      <div class="detail-grid">
+        <div><span>INDICATIF</span><b id="d-call">—</b></div>
+        <div><span>TYPE</span><b id="d-type">—</b></div>
+        <div><span>IMMATRICULATION</span><b id="d-reg">—</b></div>
+        <div><span>VITESSE</span><b id="d-speed">—</b></div>
+        <div><span>ORIGINE</span><b id="d-origin">—</b></div>
+        <div><span>DESTINATION</span><b id="d-dest">—</b></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>DONNÉES ADS-B COMMUNAUTAIRES</span>
+      <span>ACTUALISATION : 5 SEC</span>
+    </footer>
+    <p id="message" class="message">Autorisez la localisation pour commencer.</p>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
