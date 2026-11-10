@@ -514,3 +514,45 @@ footer {
   }
 
 }
+
+/* TABLEAU MECANIQUE SPLIT-FLAP */
+
+.flap-letter {
+  display: inline-block;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+.flap-letter.flap-turn {
+  animation: splitFlap 550ms cubic-bezier(.2,.7,.3,1) both;
+}
+
+@keyframes splitFlap {
+  0% {
+    transform: perspective(180px) rotateX(90deg);
+    opacity: 0;
+    filter: brightness(2);
+  }
+
+  45% {
+    transform: perspective(180px) rotateX(-15deg);
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+
+  70% {
+    transform: perspective(180px) rotateX(8deg);
+  }
+
+  100% {
+    transform: perspective(180px) rotateX(0deg);
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flap-letter.flap-turn {
+    animation: none;
+  }
+}
