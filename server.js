@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3000;
 const ROUTE_TTL_MS = 6 * 60 * 60 * 1000;
 const routeCache = new Map();
 
-app.use(express.static("public", { maxAge: "1h" }));
+app.use(express.static(new URL("./public", import.meta.url).pathname, { maxAge: "1h" }));
 
 async function fetchJson(url, timeoutMs = 9000) {
   const controller = new AbortController();
